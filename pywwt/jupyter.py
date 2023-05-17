@@ -3,6 +3,7 @@
 # because we instead use JSON messages to transmit any changes between the
 # Python and Javascript parts so that we can re-use this for the Qt client.
 
+import os
 import ipywidgets as widgets
 import numpy as np
 from traitlets import Unicode, default, link, directional_link
@@ -58,7 +59,9 @@ class WWTJupyterWidget(widgets.DOMWidget, BaseWWTWidget):
 
         _maybe_perpetrate_mega_kernel_hack()
 
-        self._appUrl = '/wwt/research/'
+        service_prefix = os.environ.get('JUPYTERHUB_SERVICE_PREFIX', '/')
+        self._appUrl = f'{service_prefix}wwt/research'
+        # self._appUrl = '/wwt/research/'
 
         widgets.DOMWidget.__init__(self)
         dom_listener.source = self
