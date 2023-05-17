@@ -60,7 +60,7 @@ class WWTJupyterWidget(widgets.DOMWidget, BaseWWTWidget):
         _maybe_perpetrate_mega_kernel_hack()
 
         service_prefix = os.environ.get('JUPYTERHUB_SERVICE_PREFIX', '/')
-        self._appUrl = f'{service_prefix}wwt/research'
+        self._appUrl = f'{service_prefix}wwt/research/'
         # self._appUrl = '/wwt/research/'
 
         widgets.DOMWidget.__init__(self)
